@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#tabla {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#bal-oszlop, #jobb-oszlop {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.szo {
+    padding: 10px;
+    margin: 5px;
+    background-color: lightgrey;
+    border: 1px solid black;
+    cursor: pointer;
+    user-select: none;
+}
+
+.szo.kivalasztott {
+    background-color: lightblue;
+}
+
+.szo.helyes {
+    background-color: lightgreen;
+}
+
+.szo.helytelen {
+    background-color: lightcoral;
+    
+}
+
+
+#szamlalok {
+    margin-bottom: 20px;
+}
+
+
