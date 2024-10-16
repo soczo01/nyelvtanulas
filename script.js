@@ -9,7 +9,6 @@ const szavak = [
 let kivalasztottMagyar = null;
 let kivalasztottAngol = null;
 
-
 let sikeresProba = 0;
 let sikertelenProba = 0;
 
@@ -51,13 +50,11 @@ function ellenorizPar() {
     const helyesPar = szavak.find(szo => szo.magyar === magyarSzo && szo.angol === angolSzo);
 
     if (helyesPar) {
- 
         kivalasztottMagyar.classList.add('helyes');
         kivalasztottAngol.classList.add('helyes');
         sikeresProba++;
         document.getElementById('sikeres-szamlalo').textContent = sikeresProba;
     } else {
-   
         kivalasztottMagyar.classList.add('helytelen');
         kivalasztottAngol.classList.add('helytelen');
         sikertelenProba++;
@@ -66,17 +63,27 @@ function ellenorizPar() {
         setTimeout(() => {
             kivalasztottMagyar.classList.remove('helytelen');
             kivalasztottAngol.classList.remove('helytelen');
-        }, 1000);
+
+       
+            kivalasztottMagyar.classList.remove('kivalasztott');
+            kivalasztottAngol.classList.remove('kivalasztott');
+
+ 
+            kivalasztottMagyar = null;
+            kivalasztottAngol = null;
+        }, 700);
+        return;
     }
 
-    kivalasztottMagyar.classList.remove('kivalasztott');
-    kivalasztottAngol.classList.remove('kivalasztott');
-    kivalasztottMagyar = null;
-    kivalasztottAngol = null;
+    setTimeout(() => {
+        kivalasztottMagyar.classList.remove('kivalasztott');
+        kivalasztottAngol.classList.remove('kivalasztott');
+        kivalasztottMagyar = null;
+        kivalasztottAngol = null;
+    }, 300);
 }
 
 document.getElementById('start').addEventListener('click', () => {
-
     document.getElementById('bal-oszlop').innerHTML = '';
     document.getElementById('jobb-oszlop').innerHTML = '';
 
@@ -88,14 +95,9 @@ document.getElementById('start').addEventListener('click', () => {
     const magyarSzavak = szavak.map(szo => szo.magyar);
     const angolSzavak = szavak.map(szo => szo.angol);
 
-
     const kevertMagyarSzavak = kever(magyarSzavak);
     const kevertAngolSzavak = kever(angolSzavak);
 
     kevertMagyarSzavak.forEach(szo => szoElemLetrehoz(szo, 'bal-oszlop', 'magyar'));
     kevertAngolSzavak.forEach(szo => szoElemLetrehoz(szo, 'jobb-oszlop', 'angol'));
 });
-
-
-
-
